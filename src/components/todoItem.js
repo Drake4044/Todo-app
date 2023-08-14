@@ -1,6 +1,8 @@
 import React from "react";
+import { completeTodo, deleteTodo } from "../redux/acctions";
+import { useDispatch } from "react-redux";
 
-const TodoItem = ({ todo, deleteTodo, completeTodo }) => {
+const TodoItem = ({ todo }) => {
 
     const getStyle = () => {
         return {
@@ -11,15 +13,25 @@ const TodoItem = ({ todo, deleteTodo, completeTodo }) => {
         };
       };
 
+    const dispatch = useDispatch()
+
+    const todoComplete = id => {
+        dispatch(completeTodo(id))
+    }
+
+    const todoDelete = id => {
+        dispatch(deleteTodo(id))
+    }
+
     return (
         <div style={getStyle()}>
             <input
                 type="checkbox"
                 checked= {todo.complete}
-                onChange={() => completeTodo(todo.id)}
+                onChange={() => todoComplete(todo.id)}
             />
             {todo.task}
-            <button onClick={() => deleteTodo(todo.id)}>
+            <button onClick={() => todoDelete(todo.id)}>
                 X
             </button>
         </div>

@@ -1,14 +1,29 @@
-import { useState } from "react";
-import data from "./data.json";
+import { useEffect, useState } from "react";
 import Todo from "./components/todo";
 import "./App.css"
+import { getAllTodos } from "./redux/acctions";
+import { useDispatch, useSelector } from "react-redux";
 import TodoFrom from "./components/todoForm";
 
 
-function App() {
+ const App = () => {
 
-  const [ todos, setTodos ] = useState(data)
+  const [ todos, setTodos ] = useState([])
 
+  const dispatch = useDispatch()
+  const serverTodos = useSelector( state => state.todos )
+
+  useEffect( () => {
+    dispatch(getAllTodos())
+  },[dispatch])
+
+  useEffect( () => {
+    setTodos(serverTodos)
+  },[serverTodos])
+
+  const reloadTodos = () => {
+    dispatch(getAllTodos())
+  }
 
 
   const addTodo = newTodo => {
@@ -17,34 +32,17 @@ function App() {
         task: newTodo,
         complete: false
       }
-
       setTodos([ ...todos, newItem ])
-  }
-
-  const completeTodo = id => {
-    setTodos(
-      todos.map( todo => {
-        return todo.id === id
-        ? {...todo, complete: !todo.complete} // cambia al opuesto
-        : {...todo}
-      })
-      
-    )
-  }
-
-  const deleteTodo = id => {
-    setTodos([...todos].filter( todo => todo.id !== id ))
   }
 
   return (
     <div className="container">
+      <div className="header">
         <h1>Todo App</h1>
+        <button onClick={() => reloadTodos()} >X</button>
+      </div>
         <TodoFrom addTodo={ addTodo } />
-        <Todo 
-        todos={ todos }
-        deleteTodo={ deleteTodo }
-        completeTodo= { completeTodo }
-        />
+        <Todo todos={ todos }/>
     </div>
   );  
 }
