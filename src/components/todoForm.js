@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addTodo } from "../redux/acctions";
+import { addTodo, getAllTodos } from "../redux/acctions";
 
 const TodoFrom = () => {
 
@@ -15,28 +15,21 @@ const TodoFrom = () => {
         setUserInput(value)
     }
 
-    const arrayTask = () => {
-        const values = []
-        todos.forEach( todo => values.push(todo.task))
-        return values
-    }
+    const findTask = todos.map( todo => todo.task)
 
-    const findTask = arrayTask()
-    
-
-    const handleSubmit = e => {
+    const handleSubmit = async e => {
         e.preventDefault()
         if (userInput.trim() !== "" && !findTask.includes(userInput)) {
             let newItem = {
-                id: todos[todos.length-1].id + 1, // siempre el siguiente numero del ultimo id, esto evita que se dupliquen ids al eliminarlos.
                 task: userInput,
                 complete: false
             }
-            dispatch(addTodo(newItem))
+            await dispatch(addTodo(newItem))
+            dispatch(getAllTodos())
             setUserInput("")
         }
         if(findTask.includes(userInput)) {
-            setUserInput("")
+            setUserInput("esta tarea ya existe!!")
         }
     }
 

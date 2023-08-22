@@ -30,20 +30,22 @@ const todosPrueba = [{
 
 // llamado()
 
-const userInput = "coca"
+// const userInput = "coca"
 
-const findTask = () => {
-    const values = []
-    todosPrueba.forEach( todo => values.push(todo.task))
-    return values
-}
+// const findTask = () => {
+//     const values = []
+//     todosPrueba.forEach( todo => values.push(todo.task))
+//     return values
+// }
 
-const task = findTask()
+// const task = findTask()
 
-const valores = Object.values(todosPrueba)
-const condicional = findTask().includes(userInput)
+const map = todosPrueba.map( todo => todo.task)
 
-console.log(condicional)
+// const valores = Object.values(todosPrueba)
+// const condicional = findTask().includes(userInput)
+
+console.log(map)
 // console.log(valores)
 // console.log(task)
 

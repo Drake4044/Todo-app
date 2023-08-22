@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Todo from "./components/todo";
 import "./App.css"
-import { getAllTodos } from "./redux/acctions";
+import { addTodo, getAllTodos } from "./redux/acctions";
 import { useDispatch, useSelector } from "react-redux";
 import TodoFrom from "./components/todoForm";
 
@@ -23,16 +23,6 @@ import TodoFrom from "./components/todoForm";
 
   const reloadTodos = () => {
     dispatch(getAllTodos())
-  }
-
-
-  const addTodo = newTodo => {
-      let newItem = {
-        id: todos[todos.length-1].id + 1, // siempre el siguiente numero del ultimo id, esto evita que se dupliquen ids al eliminarlos.
-        task: newTodo,
-        complete: false
-      }
-      setTodos([ ...todos, newItem ])
   }
 
   return (
