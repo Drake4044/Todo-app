@@ -1,0 +1,11 @@
+.panelLogin {
+    display: block;
+    align-items: center;
+    align-content: center;
+    width: 50%;
+    padding: 10px;
+    margin: auto;
+    background-color: azure;
+    border: 3px solid rgb(17, 87, 119);
+    border-radius: 5px;
+}

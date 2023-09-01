@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addTodo, getAllTodos } from "../redux/acctions";
+import { addTodo, getUserTodos } from "../redux/acctions";
+import Cookies from "universal-cookie";
 
 const TodoFrom = () => {
 
     const [ userInput , setUserInput ] = useState("")
+    const coockies = new Cookies()
+    const userId = coockies.get("userId")
 
     const todos = useSelector(state => state.todos)
 
@@ -21,11 +24,12 @@ const TodoFrom = () => {
         e.preventDefault()
         if (userInput.trim() !== "" && !findTask.includes(userInput)) {
             let newItem = {
+                userId: userId,
                 task: userInput,
                 complete: false
             }
             await dispatch(addTodo(newItem))
-            dispatch(getAllTodos())
+            dispatch(getUserTodos(userId))
             setUserInput("")
         }
         if(findTask.includes(userInput)) {

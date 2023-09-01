@@ -1,0 +1,22 @@
+.register {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    width: 50%;
+    padding: 15px;
+    margin: auto;
+    background-color: azure;
+    border: 3px solid rgb(17, 87, 119);
+    border-radius: 5px;
+}
+
+.inputsBox{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 50%;
+    margin: 10px;
+    padding: 10px;
+    border: 3px solid rgb(17, 87, 119);
+}
