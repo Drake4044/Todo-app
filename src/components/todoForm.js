@@ -22,7 +22,7 @@ const TodoFrom = () => {
 
     const handleSubmit = async e => {
         e.preventDefault()
-        if (userInput.trim() !== "" && !findTask.includes(userInput)) {
+        if (userInput.trim() !== "") {
             let newItem = {
                 userId: userId,
                 task: userInput,
@@ -31,9 +31,6 @@ const TodoFrom = () => {
             await dispatch(addTodo(newItem))
             dispatch(getUserTodos(userId))
             setUserInput("")
-        }
-        if(findTask.includes(userInput)) {
-            setUserInput("esta tarea ya existe!!")
         }
     }
 

@@ -1,6 +1,7 @@
 import React from "react";
-import { completeTodo, deleteTodo } from "../redux/acctions";
+import { completeTodo, deleteTodo, getUserTodos } from "../redux/acctions";
 import { useDispatch } from "react-redux";
+import Cookies from "universal-cookie";
 
 const TodoItem = ({ todo }) => {
 
@@ -14,13 +15,17 @@ const TodoItem = ({ todo }) => {
       };
 
     const dispatch = useDispatch()
+    const cookies = new Cookies()
+    const userId = cookies.get("userId")
 
-    const todoComplete = id => {
-        dispatch(completeTodo(id))
+    const todoComplete = async () => {
+        await dispatch(completeTodo(userId, todo.task))
+        dispatch(getUserTodos(userId))
     }
 
-    const todoDelete = id => {
-        dispatch(deleteTodo(id))
+    const todoDelete = async () => {
+        await dispatch(deleteTodo(userId, todo.task))
+        dispatch(getUserTodos(userId))
     }
 
     return (
@@ -28,10 +33,10 @@ const TodoItem = ({ todo }) => {
             <input
                 type="checkbox"
                 checked= {todo.complete}
-                onChange={() => todoComplete(todo.id)}
+                onChange={todoComplete}
             />
             {todo.task}
-            <button onClick={() => todoDelete(todo.id)}>
+            <button onClick={todoDelete}>
                 X
             </button>
         </div>

@@ -42,12 +42,12 @@ import Cookies from "universal-cookie";
           {
             !userLoged
             ? <div className="noTodos" >
-                <h1>No hay Todos</h1>
+                <h1>No hay Tareas</h1>
               </div> 
             : !todos.length
-            ? <div className="noTodos" >
+            ? <div className="todos" >
                 <TodoFrom/>
-                <h1>Aun no tienes Todos</h1>
+                <h1>Aun no tienes Tareas</h1>
               </div>
             :  <div className="todos">
                 <TodoFrom/>

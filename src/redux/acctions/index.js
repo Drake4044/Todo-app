@@ -1,9 +1,6 @@
 import axios from "axios"
 
 export const GET_ALL_TODOS = "GET_ALL_TODOS"
-export const COMPLETE_TODO = "COMPLETE_TODO"
-export const ADD_TODO = "ADD_TODO"
-export const DELETE_TODO = "DELETE_TODO"
 export const GET_USER_TODOS = "GET_USER_TODOS"
 
 
@@ -39,10 +36,17 @@ export const getUserTodos = id => {
     }
 }
 
-export const completeTodo = id => {
-    return {
-        type: COMPLETE_TODO,
-        payload: id
+export const completeTodo = (id, task) => {
+    return async () => {
+        try {
+            const todo = { id, task }
+            const url = "http://localhost:3001/todos"
+            const completeTodo = await axios.put(url,todo)
+            console.log(completeTodo);
+            alert(`Se cambio el estado de la tarea "${task}"`)
+        } catch (error) {
+            console.log(error);
+        } 
     }
 }
 
@@ -51,17 +55,25 @@ export const addTodo = todo => {
         try {
             const url = "http://localhost:3001/todos"
             const todos = await axios.post(url,todo)
-            console.log(todos.data);
+            console.log(todos);
+            alert(`Se agrego la tarea "${todo.task}"`)
         } catch (error) {
-            console.log(error);
+            alert(error.response.data);
         } 
     }
 }
 
-export const deleteTodo = id => {
-    return {
-        type: DELETE_TODO,
-        payload: id
+export const deleteTodo = (id, task) => {
+    return async () => {
+        try {
+            const todo = { id, task }
+            const url = "http://localhost:3001/todos"
+            const todoToDelete = await axios.delete(url,{ data: todo })
+            console.log(todoToDelete);
+            alert("La tarea fue eliminada")
+        } catch (error) {
+            console.log(error.message);
+        } 
     }
 }
 

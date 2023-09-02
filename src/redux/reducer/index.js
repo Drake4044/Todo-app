@@ -1,4 +1,4 @@
-import { COMPLETE_TODO, GET_ALL_TODOS, DELETE_TODO, GET_USER_TODOS } from "../acctions"
+import { GET_ALL_TODOS, GET_USER_TODOS } from "../acctions"
 
 const initialState =  {
     todos: []
@@ -12,24 +12,10 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 todos: action.payload
             }
-        case COMPLETE_TODO:
-            return {
-                ...state,
-                todos: state.todos.map( todo => 
-                    todo.id === action.payload
-                    ? {...todo, complete: !todo.complete} // cambia al opuesto
-                    : {...todo}
-                )
-            }
         case GET_USER_TODOS:
             return {
                 ...state,
                 todos: action.payload
-            }
-        case DELETE_TODO:
-            return {
-                ...state,
-                todos: state.todos.filter( todo => todo.id !== action.payload )
             }
         default: return {...state}
     }

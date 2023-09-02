@@ -19,7 +19,8 @@
     padding-left: 50px;
 }
 
-.noTodos {
-    display: block;
-    padding-left: 50px;
+.noTodos{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
