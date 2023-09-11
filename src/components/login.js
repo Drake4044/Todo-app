@@ -52,7 +52,7 @@ const Login = () => {
                 <button type="submit" onClick={iniciarSesion} >Iniciar Sesion</button>
             </form>
 
-            <p>No estas registredo?</p>
+            <p>No estas registrado?</p>
 
             <Link to="/register" >
                 <button>Registrarse</button>

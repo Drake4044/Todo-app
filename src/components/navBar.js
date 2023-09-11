@@ -10,10 +10,12 @@ const NavBar = () => {
     
 
     const cerrarSesion = () => {
-        cookies.remove("userId", { path: "/" })
-        cookies.remove("userName", { path: "/" })
-        cookies.remove("userMail", { path: "/" })
-        window.location.href = "./"
+        if(userMail) {
+            cookies.remove("userId", { path: "/" })
+            cookies.remove("userName", { path: "/" })
+            cookies.remove("userMail", { path: "/" })
+            window.location.href = "./"
+        } else alert("Aun no estas logeado")
     }
 
 
@@ -22,16 +24,18 @@ const NavBar = () => {
             <div className="logo">
                  <h1>SOY EL NAVBAR</h1>
             </div>
-            <div className="login">
-                {
+            {
                 userMail
-                ? <h2>{userMail}</h2>
-                : <Link to="/login" >
-                    <button>Iniciar Sesion</button>
-                </Link>     
-                }
-                <button onClick={cerrarSesion} >Cerrar Sesion</button>
-            </div>
+                ? <div className="login">
+                    <h2>{userMail}</h2>
+                    <button onClick={cerrarSesion} >Cerrar Sesion</button>                      
+                </div>
+                : <div className="login">
+                    <Link to="/login" >
+                        <button>Iniciar Sesion</button>
+                    </Link>  
+                </div>   
+            }
         </div>
     )
 }

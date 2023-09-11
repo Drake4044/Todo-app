@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addTodo, getUserTodos } from "../redux/acctions";
 import Cookies from "universal-cookie";
 
@@ -9,8 +9,6 @@ const TodoFrom = () => {
     const coockies = new Cookies()
     const userId = coockies.get("userId")
 
-    const todos = useSelector(state => state.todos)
-
     const dispatch = useDispatch()
 
     const handleChange = e => {
@@ -18,14 +16,12 @@ const TodoFrom = () => {
         setUserInput(value)
     }
 
-    const findTask = todos.map( todo => todo.task)
-
     const handleSubmit = async e => {
         e.preventDefault()
         if (userInput.trim() !== "") {
             let newItem = {
                 userId: userId,
-                task: userInput,
+                task: `${userInput.charAt(0).toUpperCase()}${userInput.slice(1)}`,
                 complete: false
             }
             await dispatch(addTodo(newItem))

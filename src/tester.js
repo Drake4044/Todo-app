@@ -40,13 +40,16 @@ const todosPrueba = [{
 
 // const task = findTask()
 
-const map = todosPrueba.map( todo => todo.task)
+// const map = todosPrueba.map( todo => todo.task)
 
 // const valores = Object.values(todosPrueba)
 // const condicional = findTask().includes(userInput)
 
-console.log(map)
+// console.log(map)
 // console.log(valores)
 // console.log(task)
 
+const string = "tarea nueva"
 
+console.log(string.slice(0,1).toUpperCase());
+console.log(`${string.charAt(0).toUpperCase()}${string.slice(1)}`);

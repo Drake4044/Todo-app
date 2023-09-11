@@ -40,10 +40,23 @@ export const completeTodo = (id, task) => {
     return async () => {
         try {
             const todo = { id, task }
-            const url = "http://localhost:3001/todos"
+            const url = "http://localhost:3001/todos/complete"
             const completeTodo = await axios.put(url,todo)
             console.log(completeTodo);
             alert(`Se cambio el estado de la tarea "${task}"`)
+        } catch (error) {
+            console.log(error);
+        } 
+    }
+}
+
+export const editTodo = (todo) => {
+    return async () => {
+        try {
+            const url = "http://localhost:3001/todos/edit"
+            const editTodo = await axios.put(url,todo)
+            console.log(editTodo);
+            alert(`Se a editado la tarea"`)
         } catch (error) {
             console.log(error);
         } 
@@ -98,6 +111,7 @@ export const createUser = user => {
             const login = await axios.post(url,user)
             window.location.href = "./login"
             console.log(login.data);
+            alert("Usuario creado con exito")
         } catch (error) {
             alert(error.response.data);
         } 

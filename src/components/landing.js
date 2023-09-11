@@ -35,7 +35,7 @@ import Cookies from "universal-cookie";
     <div className="container">
       <NavBar/>
       <div className="panel">
-        <div className="header">
+        <div class="flex justify-evenly items-center">
           <h1>Todo App</h1>
           <button onClick={() => reloadTodos()} >X</button>
         </div>
@@ -43,6 +43,7 @@ import Cookies from "universal-cookie";
             !userLoged
             ? <div className="noTodos" >
                 <h1>No hay Tareas</h1>
+                <p>Inicia sesion para agregar tareas</p>
               </div> 
             : !todos.length
             ? <div className="todos" >

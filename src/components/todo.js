@@ -3,7 +3,7 @@ import TodoItem from "./todoItem"
 
 const Todo = ({ todos }) => {
     return (
-        <div>
+        <div class="border-red-600 p-10">
             {todos.map( ( item, index ) => (
                 <TodoItem
                     key={`Todo ${index}`}
