@@ -34,7 +34,7 @@ import Cookies from "universal-cookie";
   return (
     <div className="container">
       <NavBar/>
-      <div className="panel">
+      <div className="panel" class="" >
         <div class="flex justify-evenly items-center">
           <h1>Todo App</h1>
           <button onClick={() => reloadTodos()} >X</button>

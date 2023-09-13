@@ -3,7 +3,6 @@
     align-items: center;
     justify-content: space-around;
     margin-bottom: 5px;
-    /* width: auto; */
     height: 3rem;
     background-color: azure;
     border: 3px solid rgb(17, 87, 119);
@@ -15,7 +14,7 @@
     display: flex;
     background-color: rgb(159, 224, 224);
     width: 25rem;
-    height: 2rem;
+    height: 3rem;
     border: 3px solid rgb(17, 87, 119);
     border-radius: 10px;
     align-items: center;

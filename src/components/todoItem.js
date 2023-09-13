@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { completeTodo, deleteTodo, editTodo, getUserTodos } from "../redux/acctions";
 import { useDispatch } from "react-redux";
 import Cookies from "universal-cookie";
+import Input from "./input";
+import Button from "./button";
 
 const TodoItem = ({ todo }) => {
 
@@ -48,8 +50,10 @@ const TodoItem = ({ todo }) => {
         setIsEdit(false)
     }
 
+    const style = todo.complete ? "line-through" : "no-underline"
+
     return (
-        <div style={getStyle()}>
+        <div class={`${style} space-x-6 py-1`} >
             <input
                 type="checkbox"
                 checked= {todo.complete}
@@ -58,7 +62,7 @@ const TodoItem = ({ todo }) => {
             {
              isEdit
              ? <form onSubmit={onSubmit} >
-                    <input 
+                    <Input 
                         value={todoToEdit.task}
                         onChange={handleChange}
                     /> 
@@ -66,12 +70,12 @@ const TodoItem = ({ todo }) => {
              : todo.task
             }
            
-            <button onClick={todoDelete}>
-                X
-            </button>
-            <button onClick={() => setIsEdit(true)} >
+            <Button onClick={todoDelete}>
+                Eliminar
+            </Button>
+            <Button onClick={() => setIsEdit(true)} >
                 Editar
-            </button>
+            </Button>
         </div>
     )
 

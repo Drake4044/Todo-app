@@ -2,6 +2,7 @@ import React from "react";
 import "./navBar.css"
 import { Link } from "react-router-dom";
 import Cookies from "universal-cookie";
+import Button from "./button";
 
 const NavBar = () => {
 
@@ -28,11 +29,13 @@ const NavBar = () => {
                 userMail
                 ? <div className="login">
                     <h2>{userMail}</h2>
-                    <button onClick={cerrarSesion} >Cerrar Sesion</button>                      
+                    <Button onClick={cerrarSesion} >Cerrar Sesion</Button>                      
                 </div>
                 : <div className="login">
                     <Link to="/login" >
-                        <button>Iniciar Sesion</button>
+                        <Button>
+                            Iniciar Sesion
+                            </Button>
                     </Link>  
                 </div>   
             }
