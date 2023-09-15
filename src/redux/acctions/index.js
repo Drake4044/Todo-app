@@ -54,9 +54,12 @@ export const editTodo = (todo) => {
     return async () => {
         try {
             const url = "http://localhost:3001/todos/edit"
-            const editTodo = await axios.put(url,todo)
-            console.log(editTodo);
+            if(todo.task.trim() === ""){
+                alert("No se puede guardar una tarea 'vacia'")
+            } else {
+            await axios.put(url,todo)
             alert(`Se a editado la tarea"`)
+            }
         } catch (error) {
             console.log(error);
         } 

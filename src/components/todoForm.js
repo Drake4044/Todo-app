@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addTodo, getUserTodos } from "../redux/acctions";
 import Cookies from "universal-cookie";
+import Button from "./button";
 
 const TodoFrom = () => {
 
@@ -32,9 +33,14 @@ const TodoFrom = () => {
 
     return (
         <div>   
-            <form onSubmit={ handleSubmit } >
-                <input type="text" value={userInput} onChange={handleChange} />
-                <button>Add To Do</button>
+            <form onSubmit={ handleSubmit } class="flex justify-center items-center space-x-10" >
+                <input 
+                type="text" 
+                value={userInput} 
+                onChange={handleChange} 
+                class="border-solid border-2 border-sky-700 rounded-md"
+                />
+                <Button onClick={handleSubmit} >Add To Do</Button>
             </form>
         </div>
     )

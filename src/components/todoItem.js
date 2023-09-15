@@ -2,25 +2,13 @@ import React, { useState } from "react";
 import { completeTodo, deleteTodo, editTodo, getUserTodos } from "../redux/acctions";
 import { useDispatch } from "react-redux";
 import Cookies from "universal-cookie";
-import Input from "./input";
 import Button from "./button";
+import EditTodo from "./editTodo";
+
 
 const TodoItem = ({ todo }) => {
 
     const [ isEdit , setIsEdit ] = useState(false)
-    const [ todoToEdit , setTodoToEdit ] = useState({
-        id: todo.id,
-        task: todo.task
-    })
- 
-    const getStyle = () => {
-        return {
-          textDecoration: todo.complete ? "line-through" : "none",
-          margin: "5px",
-          padding: "5px",
-          marginBottom: "-4px",
-        };
-      };
 
     const dispatch = useDispatch()
     const cookies = new Cookies()
@@ -36,24 +24,10 @@ const TodoItem = ({ todo }) => {
         dispatch(getUserTodos(userId))
     }
 
-    const handleChange = e => {
-        setTodoToEdit({
-            ...todoToEdit,
-            task: e.target.value
-        })
-    }
-
-    const onSubmit = async e => {
-        e.preventDefault()
-        await dispatch(editTodo(todoToEdit))
-        await dispatch(getUserTodos(userId))
-        setIsEdit(false)
-    }
-
     const style = todo.complete ? "line-through" : "no-underline"
 
     return (
-        <div class={`${style} space-x-6 py-1`} >
+        <div class={`${style} space-x-6 py-1 m-1 flex items-center justify-around rounded-lg border-2 border-solid border-sky-700`} >
             <input
                 type="checkbox"
                 checked= {todo.complete}
@@ -61,21 +35,17 @@ const TodoItem = ({ todo }) => {
             />
             {
              isEdit
-             ? <form onSubmit={onSubmit} >
-                    <Input 
-                        value={todoToEdit.task}
-                        onChange={handleChange}
-                    /> 
-                </form> 
-             : todo.task
+             ? <EditTodo setIsEdit={setIsEdit} todo={todo}/> 
+             : <p class="text-base" >{todo.task}</p>
             }
-           
-            <Button onClick={todoDelete}>
-                Eliminar
-            </Button>
-            <Button onClick={() => setIsEdit(true)} >
-                Editar
-            </Button>
+            <div class="space-x-7" >
+                <Button onClick={todoDelete}>
+                    Eliminar
+                </Button>
+                <Button onClick={() => setIsEdit(!isEdit)} >
+                    Editar
+                </Button>
+            </div>
         </div>
     )
 

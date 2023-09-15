@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./register.css"
 import { Link } from "react-router-dom";
 import { createUser } from "../redux/acctions";
 import { useDispatch } from "react-redux";
@@ -71,7 +70,7 @@ const Register = () => {
                         <Button>Volver al Menu</Button>
                     </Link>
 
-                    <p>Ya estas registrado??</p>
+                    <p class="p-4 text-sky-700 font-bold animate-bounce" >Ya estas registrado??</p>
 
                     <Link to="/login" >
                         <Button>Iniciar Sesion</Button>

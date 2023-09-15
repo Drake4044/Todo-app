@@ -19,19 +19,21 @@ const NavBar = () => {
         } else alert("Aun no estas logeado")
     }
 
+    const loginClass = "flex items-center justify-around m-2 space-x-10 py-2 px-3 w-auto bg-emerald-100 border-2 border-solid border-sky-800 rounded-lg"
+
 
     return (
-        <div className="navbar">
+        <div class="flex items-center justify-around border-4 border-solid border-sky-800  bg-gradient-to-r from-cyan-200 to-cyan-700 ">
             <div className="logo">
-                 <h1>SOY EL NAVBAR</h1>
+                 <h1 class="font-bold" >SOY EL NAVBAR</h1>
             </div>
             {
                 userMail
-                ? <div className="login">
-                    <h2>{userMail}</h2>
+                ? <div class={`${loginClass}`}>
+                    <h2 class="text-lg font-bold text-sky-700" >{userMail}</h2>
                     <Button onClick={cerrarSesion} >Cerrar Sesion</Button>                      
                 </div>
-                : <div className="login">
+                : <div class={`${loginClass}`}>
                     <Link to="/login" >
                         <Button>
                             Iniciar Sesion
