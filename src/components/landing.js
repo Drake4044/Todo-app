@@ -13,19 +13,20 @@ import Button from "./button";
   const [ todos, setTodos ] = useState([])
   
   const dispatch = useDispatch()
+  const serverTodos = useSelector( state => state.todos )
+
   const cookies = new Cookies()
   const userLoged = cookies.get("userMail")
   const userId = cookies.get("userId")
-
-  const serverTodos = useSelector( state => state.todos )
-
-  useEffect( () => {
-    dispatch(getUserTodos(userId))
-  },[dispatch,userId])
+  
 
   useEffect( () => {
-    setTodos(serverTodos)
-  },[serverTodos])
+    if(userLoged) dispatch(getUserTodos(userId))
+  },[dispatch,userId,userLoged])
+
+  useEffect( () => {
+    if(userLoged) setTodos(serverTodos)
+  },[serverTodos,userLoged])
 
   const reloadTodos = () => {
     dispatch(getUserTodos(userId))
@@ -48,17 +49,17 @@ import Button from "./button";
           {
             !userLoged
             ? <div class="flex flex-col items-center m-3 mb-10 space-y-3 " >
-                <h1 class="m-7 text-sky-700 text-xl font-bold" >No hay Tareas</h1>
-                <p class="m-7 text-sky-700 text-xl font-bold animate-bounce" >Inicia sesion para agregar tareas!!</p>
+                <h1 class="m-6 mb-7 text-sky-700 text-xl font-bold" >No hay Tareas</h1>
+                <p class="text-sky-700 text-xl font-bold animate-bounce" >Inicia sesion para agregar tareas!!</p>
               </div> 
             : !todos.length
             ? <div class="flex flex-col justify-center items-center" >
                 <TodoFrom/>
-                <h1 class="m-7 text-sky-700 text-xl font-bold" >Aun no tienes Tareas</h1>
+                <h1 class="m-7 text-sky-700 text-xl font-bold animate-bounce" >Aun no tienes Tareas</h1>
               </div>
             :  <div class="grid px-12"> 
                 <TodoFrom/>
-                <Todo todos={ todos }/>
+                <Todo todos={ todos } />
               </div>
           }
       </div>

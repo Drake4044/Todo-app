@@ -12,12 +12,11 @@ const EditTodo = ({ todo, setIsEdit }) => {
 
     const cookies = new Cookies()
     const userId = cookies.get("userId")
-
+    
     const dispatch = useDispatch()
 
     const handleChange = e => {
         const todo = e.target.value
-
         const finalTodo = `${todo.charAt(0).toUpperCase()}${todo.slice(1)}`
             
         setTodoToEdit({
@@ -35,13 +34,15 @@ const EditTodo = ({ todo, setIsEdit }) => {
         }
     }
 
+    const style = todoToEdit.task.length > 30 ? "w-72" : "w-52"
+
     return (
         <div>
             <form onSubmit={onSubmit} >
                     <input 
                         value={todoToEdit.task}
                         onChange={handleChange}
-                        class="border-solid border-2 border-sky-700 rounded-md"
+                        class={`border-solid border-2 border-sky-700 rounded-md ${style}`}
                     />
                 </form> 
         </div>

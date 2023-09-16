@@ -1,9 +1,10 @@
-import React, { useState } from "react";
-import { completeTodo, deleteTodo, editTodo, getUserTodos } from "../redux/acctions";
+import { useEffect, useRef, useState } from "react";
+import { completeTodo, deleteTodo, getUserTodos } from "../redux/acctions";
 import { useDispatch } from "react-redux";
 import Cookies from "universal-cookie";
 import Button from "./button";
 import EditTodo from "./editTodo";
+
 
 
 const TodoItem = ({ todo }) => {
@@ -13,6 +14,23 @@ const TodoItem = ({ todo }) => {
     const dispatch = useDispatch()
     const cookies = new Cookies()
     const userId = cookies.get("userId")
+
+    const refOne = useRef()
+
+    useEffect(() => {
+        document.addEventListener("click", handleClickOutSide, true)
+
+        return () => {
+            document.removeEventListener("click", handleClickOutSide, true)
+        }
+    },[])
+
+
+    const handleClickOutSide = e => {
+        if(!refOne.current.contains(e.target)) {
+            setIsEdit(false)
+        }
+    }   
 
     const todoComplete = async () => {
         await dispatch(completeTodo(userId, todo.task))
@@ -24,6 +42,7 @@ const TodoItem = ({ todo }) => {
         dispatch(getUserTodos(userId))
     }
 
+
     const style = todo.complete ? "line-through" : "no-underline"
 
     return (
@@ -33,16 +52,19 @@ const TodoItem = ({ todo }) => {
                 checked= {todo.complete}
                 onChange={todoComplete}
             />
-            {
-             isEdit
-             ? <EditTodo setIsEdit={setIsEdit} todo={todo}/> 
-             : <p class="text-base" >{todo.task}</p>
-            }
+            <div ref={refOne} >
+                {
+                 isEdit
+                 ? <EditTodo setIsEdit={setIsEdit} todo={todo} /> 
+                 : <p class="text-base" >{todo.task}</p>
+                }
+            </div>
+            
             <div class="space-x-7" >
                 <Button onClick={todoDelete}>
                     Eliminar
                 </Button>
-                <Button onClick={() => setIsEdit(!isEdit)} >
+                <Button onClick={() => setIsEdit(true)} >
                     Editar
                 </Button>
             </div>
