@@ -4,6 +4,7 @@ import Login from "./components/login";
 import Register from "./components/register";
 import Button from "./components/button";
 import Input from "./components/input";
+import PerfilUser from "./components/perfilUser";
 
  const App = () => { 
   return (
@@ -12,6 +13,7 @@ import Input from "./components/input";
           <Route exact path="/" element={<Langing/>} />
           <Route path="/login" element={<Login/>} />
           <Route path="/register" element={<Register/>} />
+          <Route path="/user/:id" element={<PerfilUser/>} />
           <Route path="/button" element={<Button/>} /> {/* ruta prueba */}
           <Route path="/input" element={<Input/>} /> {/* ruta prueba */}
       </Routes>

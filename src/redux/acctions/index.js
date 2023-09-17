@@ -2,6 +2,7 @@ import axios from "axios"
 
 export const GET_ALL_TODOS = "GET_ALL_TODOS"
 export const GET_USER_TODOS = "GET_USER_TODOS"
+export const GET_USER = "GET_USER"
 
 
 export const getAllTodos = () => {
@@ -29,6 +30,22 @@ export const getUserTodos = id => {
             dispatch({
             type: GET_USER_TODOS,
             payload: todos
+        })
+        } catch (error) {
+            console.log(error);
+        } 
+    }
+}
+
+export const getUser = id => {
+    return async dispatch => {
+        try {
+            const url = `http://localhost:3001/users/${id}`
+            const user = await fetch(url)
+            .then(data => data.json())
+            dispatch({
+            type: GET_USER,
+            payload: user
         })
         } catch (error) {
             console.log(error);
