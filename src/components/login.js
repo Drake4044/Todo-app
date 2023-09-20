@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import "./login.css"
+import { useState } from "react";
 import { loginUser } from "../redux/acctions";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
@@ -37,7 +36,7 @@ const Login = () => {
 
     return (
         <div className="bg-sky-100 min-h-screen grid place-content-center">
-            <div class="rounded-xl bg-gradient-to-r from-cyan-200 to-cyan-700 py-20 px-4 border-solid border-sky-700 border-4" >
+            <div class="rounded-xl bg-gradient-to-r from-cyan-200 to-cyan-700 py-16 px-4 border-solid border-sky-700 border-4" >
                 <form type="submit" class="flex space-x-3" >
                     <label class="text-sky-700 text-xl font-bold" >Mail: </label>
                     <input
@@ -55,12 +54,14 @@ const Login = () => {
                     />
                     <Button type="submit" onClick={iniciarSesion} >Iniciar Sesion</Button>
                 </form>  
-                <div class="flex justify-center my-2" >
-                    <p class="m-3 text-sky-700 font-bold animate-bounce" >No estas registrado?</p>
+                <div class="flex justify-center my-3" >
+                <Link to="/register" >
+                    <p class="m-3 text-sky-700 font-bold animate-bounce group" >No estas registrado?</p>
+                </Link>
                 </div>       
-                <div class="flex py-1 justify-evenly">
+                <div class="flex justify-evenly">
                     <Link to="/register" >
-                        <Button>Registrarse</Button>
+                        <Button hover="group-hover:text-red-300" >Registrarse</Button>
                     </Link>
                     <Link to="/" >
                         <Button>Volver al Menu</Button>

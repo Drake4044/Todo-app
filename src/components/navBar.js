@@ -1,5 +1,3 @@
-import React from "react";
-import "./navBar.css"
 import { Link } from "react-router-dom";
 import Cookies from "universal-cookie";
 import Button from "./button";
@@ -8,6 +6,7 @@ const NavBar = () => {
 
     const cookies = new Cookies()
     const userMail = cookies.get("userMail")
+    const userId = cookies.get("userId")
     
 
     const cerrarSesion = () => {
@@ -30,7 +29,9 @@ const NavBar = () => {
             {
                 userMail
                 ? <div class={`${loginClass}`}>
-                    <h2 class="text-lg font-bold text-sky-700" >{userMail}</h2>
+                    <Link to={`/user/${userId}`}     >
+                        <h2 class="text-lg font-bold text-sky-700" >{userMail}</h2>
+                    </Link>
                     <Button onClick={cerrarSesion} >Cerrar Sesion</Button>                      
                 </div>
                 : <div class={`${loginClass}`}>

@@ -138,3 +138,15 @@ export const createUser = user => {
     }
 }
 
+export const editUser = user => {
+    return async () => {
+        try {
+            const url = "http://localhost:3001/users/edit"
+            await axios.put(url,user)
+            alert("Se a editado la el Usuario")
+        } catch (error) {
+            console.log(error);
+        } 
+    }
+}
+

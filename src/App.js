@@ -4,7 +4,7 @@ import Login from "./components/login";
 import Register from "./components/register";
 import Button from "./components/button";
 import Input from "./components/input";
-import PerfilUser from "./components/perfilUser";
+import PanelUser from "./components/panelUser";
 
  const App = () => { 
   return (
@@ -13,7 +13,7 @@ import PerfilUser from "./components/perfilUser";
           <Route exact path="/" element={<Langing/>} />
           <Route path="/login" element={<Login/>} />
           <Route path="/register" element={<Register/>} />
-          <Route path="/user/:id" element={<PerfilUser/>} />
+          <Route path="/user/:id" element={<PanelUser/>} />
           <Route path="/button" element={<Button/>} /> {/* ruta prueba */}
           <Route path="/input" element={<Input/>} /> {/* ruta prueba */}
       </Routes>

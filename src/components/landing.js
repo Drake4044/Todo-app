@@ -6,6 +6,7 @@ import TodoFrom from "./todoForm";
 import NavBar from "./navBar";
 import Cookies from "universal-cookie";
 import Button from "./button";
+import { Link } from "react-router-dom";
 
 
  const Langing = () => {
@@ -50,7 +51,9 @@ import Button from "./button";
             !userLoged
             ? <div class="flex flex-col items-center m-3 mb-10 space-y-3 " >
                 <h1 class="m-6 mb-7 text-sky-700 text-xl font-bold" >No hay Tareas</h1>
-                <p class="text-sky-700 text-xl font-bold animate-bounce" >Inicia sesion para agregar tareas!!</p>
+                <Link to="/login"> 
+                  <p class="text-sky-700 text-xl font-bold animate-bounce" >Inicia sesion para agregar tareas!!</p>
+                </Link>
               </div> 
             : !todos.length
             ? <div class="flex flex-col justify-center items-center" >

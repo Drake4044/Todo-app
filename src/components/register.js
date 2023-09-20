@@ -69,9 +69,9 @@ const Register = () => {
                     <Link to="/" >
                         <Button>Volver al Menu</Button>
                     </Link>
-
-                    <p class="p-4 text-sky-700 font-bold animate-bounce" >Ya estas registrado??</p>
-
+                    <Link to="/login" >
+                        <p class="p-4 text-sky-700 font-bold animate-bounce" >Ya estas registrado??</p>
+                    </Link>
                     <Link to="/login" >
                         <Button>Iniciar Sesion</Button>
                     </Link>
