@@ -1,4 +1,4 @@
-import { GET_USER, GET_USER_TODOS } from "../acctions"
+import { DELETE_USER, GET_USER, GET_USER_TODOS } from "../acctions"
 
 const initialState =  {
     todos: [],
@@ -14,6 +14,11 @@ const rootReducer = (state = initialState, action) => {
                 todos: action.payload
             }
         case GET_USER:
+            return {
+                ...state,
+                user: action.payload
+            }
+        case DELETE_USER:
             return {
                 ...state,
                 user: action.payload

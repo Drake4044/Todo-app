@@ -3,6 +3,7 @@ import axios from "axios"
 export const GET_ALL_TODOS = "GET_ALL_TODOS"
 export const GET_USER_TODOS = "GET_USER_TODOS"
 export const GET_USER = "GET_USER"
+export const DELETE_USER = "DELETE_USER"
 
 
 export const getAllTodos = () => {
@@ -144,6 +145,22 @@ export const editUser = user => {
             const url = "http://localhost:3001/users/edit"
             await axios.put(url,user)
             alert("Se a editado la el Usuario")
+        } catch (error) {
+            console.log(error);
+        } 
+    }
+}
+
+export const deleteUser = id => {
+    return async dispatch => {
+        try {
+            const url = "http://localhost:3001/users/delete"
+            await axios.delete(url,{ data: id })
+            dispatch({
+                type: DELETE_USER,
+                payload: []
+            })
+            alert("Usuario eliminado de la base de datos")
         } catch (error) {
             console.log(error);
         } 

@@ -9,11 +9,15 @@ const EditUser = ({ setIsEdit, isEdit }) => {
         id: "",
         name: "",
         user: "",
-        mail: ""
+        mail: "",
+        password: ""
     })
+
+    const [ passInput, setPassInput ] = useState(false)
 
     const dispatch = useDispatch()
     const storeUser = useSelector( state => state.user )
+    const passwordInput = document.getElementById("password")
 
     useEffect( () => {
         setUser({
@@ -38,7 +42,7 @@ const EditUser = ({ setIsEdit, isEdit }) => {
 
     const onSubmit = async e => {
         e.preventDefault()
-        if( user.name === "" && user.user === "" && user.mail === "" ) {
+        if( user.name === "" && user.user === "" && user.mail === "" && user.password === "" ) {
             setIsEdit(!isEdit)
         } else {
             await dispatch(editUser(user))
@@ -46,11 +50,21 @@ const EditUser = ({ setIsEdit, isEdit }) => {
         }
     }
 
+    const onClick = () => {
+        setPassInput(!passInput)
+        if(passwordInput.type === "password") {
+            passwordInput.type = "text"
+        } else {
+            passwordInput.type = "password"
+        }
+    }
+
+    const buttonWarning = "hover:from-red-100 hover:to-red-500 hover:text-red-800"
     const buttonAlert = "hover:from-yellow-100 hover:to-yellow-500 hover:text-yellow-800"
 
 
     return(
-        <div class="flex flex-col justify-around p-10 pt-2 pl-1 pr-6 -translate-x-40 space-y-10" >
+        <div class="flex flex-col justify-around -translate-x-40 space-y-10 w-96" >
             <form onSubmit={onSubmit} >
                 <div class="flex justify-start items-center p-5">
                     <h1 class="text-xl pr-5 text-sky-700 font-bold" >Nombre: </h1>
@@ -83,8 +97,30 @@ const EditUser = ({ setIsEdit, isEdit }) => {
                         class={`border-solid border-2 border-sky-700 rounded-md`}
                     />
                 </div>
+
+                <div class="flex justify-start items-center p-5 -translate-x-3">
+                    <h1 class="text-xl pr-5 text-sky-700 font-bold" >Password: </h1>
+                    <input 
+                        id="password"
+                        value={user.password}
+                        placeholder={user.password}
+                        name="password"
+                        type="password"
+                        onChange={handleChange}
+                        class={`border-solid border-2 border-sky-700 rounded-md`}
+                    />
+                    <div class="pl-5">
+                        {
+                            !passInput
+                            ? <Button hover={buttonWarning} onClick={onClick} type="button" >Mostar</Button>
+                            : <Button hover={buttonAlert} onClick={onClick} type="button" >Ocultar</Button>
+                        }
+                    </div>
+                    
+                </div>
+                
                 <div class="flex justify-around items-center">
-                    <Button hover={buttonAlert}  type="submit">Editar Usuario</Button>
+                    <Button hover={buttonAlert} type="submit" onSubmit={() => onSubmit()} >Editar Usuario</Button>
                 </div>  
             </form>
         </div>
