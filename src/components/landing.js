@@ -40,7 +40,7 @@ import { Link } from "react-router-dom";
           {
              userLoged
              ?  <div class="flex justify-evenly items-center mt-9 m-7" >
-                  <h1 class="text-3xl text-sky-700 font-bold" >Todo App</h1>
+                  <h1 class="text-3xl text-sky-700 font-bold transition-all hover:scale-150 " >Todo App</h1>
                   <Button onClick={reloadTodos} >Recargar</Button>
                 </div>
             : <div class="flex items-center justify-center mt-9" >

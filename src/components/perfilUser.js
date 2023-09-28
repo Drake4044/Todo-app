@@ -12,10 +12,8 @@ const PerfilUser = ({ user, setIsEdit, isEdit })  => {
 
     const dispatch = useDispatch()
     const cookies = new Cookies()
-    const userId = cookies.get("userId")
+
     
-
-
     const onClick = async () => {
         await dispatch(deleteUser({ id: user.id }))
         cookies.remove("userId", { path: "/" })

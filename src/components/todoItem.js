@@ -67,7 +67,7 @@ const TodoItem = ({ todo }) => {
                 <Button onClick={() => setModal(true)}>
                     Eliminar
                 </Button>
-                <Button onClick={() => setIsEdit(true)} >
+                <Button onClick={() => setIsEdit(!isEdit)} >
                     Editar
                 </Button>
             </div>

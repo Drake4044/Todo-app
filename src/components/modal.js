@@ -2,6 +2,7 @@ import Button from "./button"
 
 const Modal = ({ setModal, onClick }) => {
 
+
     const buttonWarning = "hover:from-red-100 hover:to-red-500 hover:text-red-800"
     const buttonFocus = "hover:from-green-100 hover:to-green-500 hover:text-green-800 hover:shadow-lg hover:shadow-green-400"
 
