@@ -41,6 +41,7 @@ const TodoItem = ({ todo }) => {
     const todoDelete = async () => {
         await dispatch(deleteTodo(userId, todo.task))
         await dispatch(getUserTodos(userId))
+        await setModal(false)
     }
 
 

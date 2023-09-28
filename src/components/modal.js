@@ -6,7 +6,7 @@ const Modal = ({ setModal, onClick }) => {
     const buttonFocus = "hover:from-green-100 hover:to-green-500 hover:text-green-800 hover:shadow-lg hover:shadow-green-400"
 
     return (
-        <div class="flex justify-center items-center w-screen h-screen fixed top-0 left-0 bg-black bg-opacity-40">
+        <div class="flex justify-center items-center w-screen h-screen fixed top-0 left-0 bg-black bg-opacity-40 transition-all duration-100">
             <div class="flex flex-col justify-center items-center w-2/4 h-44 bg-white rounded-md shadow-md shadow-slate-800 " >
                 <h1 class="text-3xl text-sky-700 font-bold -translate-y-7" >Estas seguro?</h1>
                 <p class="text-sky-700 font-bold -translate-y-5 " >Se eliminaran todos los datos del "usuario" y sus "tareas"</p>
