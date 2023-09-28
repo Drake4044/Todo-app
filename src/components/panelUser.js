@@ -35,25 +35,27 @@ const  PanelUser = () => {
 
 
     return(
-        <div class="bg-sky-100 grid place-content-center min-h-screen">
+        <div class="grid bg-gradient-to-r from-slate-200 to-teal-200 h-screen">
 
-            <div class="flex justify-end items-center -translate-x-14 translate-y-24" >
-                <Link to="/" >
-                    <Button hover="hover:-translate-x-2" >SALIR</Button>
-                </Link>
-            </div>
+            <div class=" flex justify-around items-center pt-10 pb-10 px-40 m-2 rounded-xl bg-gradient-to-r from-cyan-200 to-cyan-700  border-solid border-sky-700 border-4 " >
 
-            <div class="flex justify-start items-center translate-x-16 translate-y-14 border-solid border-sky-700 border-4 rounded-lg pl-2 w-60 mt-2" >
-                    <h1 class="text-2xl text-sky-700 font-bold" >Perfil de Usuario: </h1>
-            </div>
-            <div class=" flex justify-around items-center pt-10 pb-10 px-40 mr-10 ml-10 mb-10 rounded-xl bg-gradient-to-r from-cyan-200 to-cyan-700  border-solid border-sky-700 border-4" >
+                <div class="flex justify-end items-center absolute translate-x-[28rem] -translate-y-[16rem] " >
+                    <Link to="/" >
+                        <Button hover="hover:-translate-x-2 hover:text-white" >SALIR</Button>
+                    </Link>
+                </div>
+
+                <div class="flex justify-start items-center border-solid border-sky-700 border-4 rounded-lg pl-2 w-60 mt-2 -translate-x-[20rem] -translate-y-[16rem] absolute" >
+                        <h1 class="text-2xl text-sky-700 font-bold" >Perfil de Usuario: </h1>
+                </div>
+
                 {
                     isEdit 
                     ? <EditUser setIsEdit={setIsEdit} isEdit={isEdit} />
                     : <PerfilUser user={user} setIsEdit={setIsEdit} isEdit={isEdit}/>
                     
                 }
-                <div class="flex flex-col border-solid border-sky-700 border-4 rounded-lg w-72 p-1 ml-0 " >
+                <div class="flex flex-col bg-gradient-to-r from-cyan-200 to-cyan-600 border-solid border-sky-700 border-4 rounded-lg w-72 p-1 ml-0 " >
                     <h1 class="text-xl text-sky-700 font-bold" >Todos: </h1>
                     {storeTodos?.map( todo => <li class="text-sky-700 font-bold underline " key={todo.id} >{todo.task}</li> )}
                 </div>

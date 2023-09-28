@@ -6,6 +6,7 @@ import Button from "./components/button";
 import Input from "./components/input";
 import PanelUser from "./components/panelUser";
 import Modal from "./components/modal";
+import DropDownMenu from "./components/dropDownMenu";
 
  const App = () => { 
   return (
@@ -18,6 +19,7 @@ import Modal from "./components/modal";
           <Route path="/button" element={<Button/>} /> {/* ruta prueba */}
           <Route path="/input" element={<Input/>} /> {/* ruta prueba */}
           <Route path="/modal" element={<Modal/>} /> {/* ruta prueba */}
+          <Route path="/menu" element={<DropDownMenu/>} /> {/* ruta prueba */}
       </Routes>
     </div>
   );  

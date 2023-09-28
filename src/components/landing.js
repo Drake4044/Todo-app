@@ -34,7 +34,7 @@ import { Link } from "react-router-dom";
   }
 
   return (
-    <div>
+    <div class="bg-gradient-to-r from-slate-200 to-teal-200 min-h-screen pb-10" >
       <NavBar/>
       <div class="bg-[url(https://img.freepik.com/vector-gratis/vector-diseno-papel-blanco-blanco_53876-161340.jpg?w=740&t=st=1690332677~exp=1690333277~hmac=baa82cec763eacac4da462d7416ac7e44ece75fe79c0fa45857ef045638b43ed)] m-auto w-4/5 border-solid border-2 border-sky-700 my-5">
           {
@@ -52,13 +52,13 @@ import { Link } from "react-router-dom";
             ? <div class="flex flex-col items-center m-3 mb-10 space-y-3 " >
                 <h1 class="m-6 mb-7 text-sky-700 text-xl font-bold" >No hay Tareas</h1>
                 <Link to="/login"> 
-                  <p class="text-sky-700 text-xl font-bold animate-bounce" >Inicia sesion para agregar tareas!!</p>
+                  <p class="text-sky-700 text-xl font-bold animate-bounce hover:text-amber-400 duration-200" >Inicia sesion para agregar tareas!!</p>
                 </Link>
               </div> 
             : !todos.length
             ? <div class="flex flex-col justify-center items-center" >
                 <TodoFrom/>
-                <h1 class="m-7 text-sky-700 text-xl font-bold animate-bounce" >Aun no tienes Tareas</h1>
+                <h1 class="m-7 text-sky-700 text-xl font-bold animate-bounce hover:text-amber-400 duration-200" >Aun no tienes Tareas</h1>
               </div>
             :  <div class="grid px-12"> 
                 <TodoFrom/>

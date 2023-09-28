@@ -38,7 +38,7 @@ const TodoFrom = () => {
                 type="text" 
                 value={userInput} 
                 onChange={handleChange} 
-                class="border-solid border-2 border-sky-700 rounded-md"
+                class="border-solid border-2 border-sky-700 rounded-md hover:border-amber-400 duration-200 focus:outline-none focus:ring focus:ring-amber-400 focus:border-transparent pl-2"
                 />
                 <Button onClick={handleSubmit} >Add To Do</Button>
             </form>

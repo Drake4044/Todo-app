@@ -42,7 +42,7 @@ const EditTodo = ({ todo, setIsEdit }) => {
                     <input 
                         value={todoToEdit.task}
                         onChange={handleChange}
-                        class={`border-solid border-2 border-sky-700 rounded-md ${style}`}
+                        class={`border-solid border-2 border-sky-700 rounded-md ${style} focus:outline-none focus:ring focus:ring-amber-400 focus:border-transparent duration-200`}
                     />
                 </form> 
         </div>

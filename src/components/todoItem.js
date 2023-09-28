@@ -4,12 +4,13 @@ import { useDispatch } from "react-redux";
 import Cookies from "universal-cookie";
 import Button from "./button";
 import EditTodo from "./editTodo";
-
+import ModalTodo from "./modalTodo";
 
 
 const TodoItem = ({ todo }) => {
 
     const [ isEdit , setIsEdit ] = useState(false)
+    const [ modal, setModal ] = useState(false)
 
     const dispatch = useDispatch()
     const cookies = new Cookies()
@@ -39,15 +40,16 @@ const TodoItem = ({ todo }) => {
 
     const todoDelete = async () => {
         await dispatch(deleteTodo(userId, todo.task))
-        dispatch(getUserTodos(userId))
+        await dispatch(getUserTodos(userId))
     }
 
 
-    const style = todo.complete ? "line-through" : "no-underline"
+    const style = todo.complete ? "line-through border-lime-600" : "no-underline border-sky-700"
 
     return (
-        <div class={`${style} space-x-6 py-1 m-1 flex items-center justify-around rounded-lg border-2 border-solid border-sky-700`} >
+        <div class={`${style} hover:border-amber-400 hover:-translate-y-1 duration-75 space-x-6 py-1 m-1 flex items-center justify-around rounded-lg border-2 border-solid `} >
             <input
+                class="accent-lime-600"
                 type="checkbox"
                 checked= {todo.complete}
                 onChange={todoComplete}
@@ -61,13 +63,16 @@ const TodoItem = ({ todo }) => {
             </div>
             
             <div class="space-x-7" >
-                <Button onClick={todoDelete}>
+                <Button onClick={() => setModal(true)}>
                     Eliminar
                 </Button>
                 <Button onClick={() => setIsEdit(true)} >
                     Editar
                 </Button>
             </div>
+            {
+               modal && <ModalTodo todoDelete={todoDelete} setModal={setModal} />
+            }
         </div>
     )
 

@@ -70,7 +70,7 @@ const Register = () => {
                         <Button>Volver al Menu</Button>
                     </Link>
                     <Link to="/login" >
-                        <p class="p-4 text-sky-700 font-bold animate-bounce" >Ya estas registrado??</p>
+                        <p class="p-4 text-sky-700 font-bold animate-bounce hover:text-amber-400 duration-200" >Ya estas registrado??</p>
                     </Link>
                     <Link to="/login" >
                         <Button>Iniciar Sesion</Button>

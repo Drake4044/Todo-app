@@ -146,6 +146,7 @@ export const editUser = user => {
             await axios.put(url,user)
             alert("Se a editado la el Usuario")
         } catch (error) {
+            alert(`${error.response.data}`)
             console.log(error);
         } 
     }
